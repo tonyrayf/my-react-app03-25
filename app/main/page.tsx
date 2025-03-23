@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Button from "../components/Button";
 import UserCard from "../components/UserCard";
-import styles from "../styles/UserCard.module.css";
+import styles from "../styles/User.module.css";
 
 export default function Home() {
   return (
