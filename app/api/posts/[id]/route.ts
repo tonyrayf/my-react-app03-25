@@ -1,13 +1,20 @@
 import { NextResponse } from 'next/server';
 
 const posts = [
-    {id: 1, title: 'Post 1', content: 'Content 1'},
-    {id: 2, title: 'Post 2', content: 'Content 2'},
+  { id: 1, title: 'Пост 1', content: 'Содержание поста 1' },
+  { id: 2, title: 'Пост 2', content: 'Содержание поста 2' },
 ];
 
-export async function GET(request: Request, {params}: {params: {id: string}}) {
-    const postId = parseInt(params.id, 10);
-    const post = posts.find((p) => p.id === postId);
+export async function GET(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  const postId = parseInt(params.id, 10);
+  const post = posts.find((p) => p.id === postId);
 
-    return NextResponse.json(post);
+  if (!post) {
+    return NextResponse.json({ error: 'Пост не найден' }, { status: 404 });
+  }
+
+  return NextResponse.json(post);
 }
